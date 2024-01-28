@@ -93,13 +93,30 @@ public:
 		return minValue(*this);
 	}
 
-	Fraction operator--(int)
+	Fraction operator++(int)
+	{
+		int num = numerator_;
+		int den = denominator_;
+		numerator_ = numerator_ + denominator_;
+		denominator_ = denominator_;
+		return minValue(Fraction(num, den));
+	}
+
+	Fraction operator--()
 	{
 		numerator_ = numerator_ - denominator_;
 		denominator_ = denominator_;
 		return minValue(*this);
 	}
 
+	Fraction operator--(int)
+	{
+		int num = numerator_;
+		int den = denominator_;
+		numerator_ = numerator_ - denominator_;
+		denominator_ = denominator_;
+		return minValue(Fraction(num, den));
+	}
 
 	friend std::ostream& operator<<(std::ostream& left, Fraction right);
 
